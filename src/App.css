@@ -9,9 +9,3 @@ body {
   overflow: hidden;
   background-color: rgb(193, 250, 250);
 }
-
-.th-border-bottom {
-  height: 1px;
-  padding: 0;
-  background-color: #6b7280;
-}
