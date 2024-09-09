@@ -24,7 +24,3 @@ html {
 .sticky-nav.hide {
   transform: translateY(-100%);
 }
-
-.sticky-nav.show {
-  transform: translateY(0);
-}

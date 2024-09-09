@@ -54,7 +54,7 @@ const NavigationBar = () => {
 
   return (
     <nav
-      className={`sticky-nav ${isHeaderVisible ? "show" : "hide"} flex flex-col md:flex-row items-center justify-between py-5 md:px-36 sticky top-0 z-50 shadow-md`}
+      className={`sticky-nav ${isHeaderVisible ? "show" : "hide"} flex flex-col md:flex-row items-center justify-between py-5 md:px-36 fixed top-0 z-50 shadow-md w-full`}
     >
       <img className="md:w-56 w-44" src={logo} alt="little-lemon-logo" />
       <ul className="flex flex-col flex-1 md:flex-row justify-evenly items-center">
