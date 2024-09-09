@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useReducer } from "react";
 import BookingForm from "../components/BookingForm";
+import LittleLemonTitle from "../components/LittleLemonTitle";
 
 const generateRandomTimes = (totalTimes) => {
   const times = [
@@ -47,12 +48,7 @@ const BookingPage = () => {
   return (
     <div className="w-full flex flex-col gap-10 md:px-10 pb-10 items-center justify-center">
       <div className="min-h-48 w-full bg-customGreen p-4 border border-solid flex flex-col gap-3 items-center">
-        <div className="flex flex-col justify-center">
-          <h1 className="text-5xl text-customYellow font-markazi">
-            Little Lemon
-          </h1>
-          <h1 className="text-4xl text-customGray font-markazi">Chicago</h1>
-        </div>
+        <LittleLemonTitle />
         <div className="text-center">
           <h2 className="text-customGray">
             Opening times: Monday - Saturday 10am - 9pm.

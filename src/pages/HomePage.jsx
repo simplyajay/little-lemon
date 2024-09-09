@@ -1,7 +1,21 @@
 import React from "react";
+import LittleLemonTitle from "../components/LittleLemonTitle";
 
 const HomePage = () => {
-  return <div>This is the homepage</div>;
+  return (
+    <div>
+      <LittleLemonTitle />
+      <LittleLemonTitle />
+      <LittleLemonTitle />
+      <LittleLemonTitle />
+      <LittleLemonTitle />
+      <LittleLemonTitle />
+      <LittleLemonTitle />
+      <LittleLemonTitle />
+      <LittleLemonTitle />
+      <LittleLemonTitle />
+    </div>
+  );
 };
 
 export default HomePage;
