@@ -37,12 +37,20 @@ const BookingPage = () => {
     dispatch({ type: "UPDATE_TIMES" });
   };
 
+  const occations = [
+    { id: 1, title: "Ordinary" },
+    { id: 2, title: "Anniversary" },
+    { id: 3, title: "Wedding" },
+    { id: 4, title: "Birthday" },
+  ];
+
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <h1>This is booking page</h1>
       <BookingForm
         updateTimes={updateTimes}
         availableTimes={availableTimes}
+        occations={occations}
       ></BookingForm>
     </div>
   );
