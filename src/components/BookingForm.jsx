@@ -1,6 +1,10 @@
 import React from "react";
+import { useState } from "react";
+import CustomDatePicker from "./CustomDatePicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const BookingForm = () => {
+  const [bookDate, setBookDate] = useState(null);
   const timings = [
     { id: 1, time: "17:00" },
     { id: 2, time: "18:00" },
@@ -21,8 +25,15 @@ const BookingForm = () => {
   return (
     <form className="grid min-w-xs md:w-1/3 w-9/12 p-5 gap-5 border border-solid border-green-500">
       <div className="flex flex-col">
-        <label htmlFor="res-date">Date</label>
-        <input type="date" id="res-date" required className={inputClass} />
+        <label htmlFor="date-picker">Date</label>
+        <CustomDatePicker
+          id="date-picker"
+          iconSize={18}
+          placeholderText="dd/mm/yyyy"
+          className={inputClass}
+          selected={bookDate}
+          onChange={(date) => setBookDate(date)}
+        ></CustomDatePicker>
       </div>
 
       <div className="flex flex-col">
