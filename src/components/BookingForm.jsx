@@ -40,6 +40,7 @@ const BookingForm = ({ updateTimes, availableTimes }) => {
           id="date-picker"
           iconSize={18}
           placeholderText="Reservation date"
+          required
           className={inputClass}
           selected={bookDate}
           filterDate={isSunday}
