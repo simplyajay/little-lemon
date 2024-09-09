@@ -45,8 +45,23 @@ const BookingPage = () => {
   ];
 
   return (
-    <div className="w-full flex flex-col items-center justify-center">
-      <h1>This is booking page</h1>
+    <div className="w-full flex flex-col gap-10 md:px-10 pb-10 items-center justify-center">
+      <div className="min-h-48 w-full bg-customGreen p-4 border border-solid flex flex-col gap-3 items-center">
+        <div className="flex flex-col justify-center">
+          <h1 className="text-5xl text-customYellow font-markazi">
+            Little Lemon
+          </h1>
+          <h1 className="text-4xl text-customGray font-markazi">Chicago</h1>
+        </div>
+        <div className="text-center">
+          <h2 className="text-customGray">
+            Opening times: Monday - Saturday 10am - 9pm.
+          </h2>
+          <h2 className="text-customGray">
+            Food is served until 8pm Monday - Saturday.
+          </h2>
+        </div>
+      </div>
       <BookingForm
         updateTimes={updateTimes}
         availableTimes={availableTimes}

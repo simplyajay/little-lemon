@@ -10,7 +10,7 @@ import NavigationBar from "./components/NavigationBar";
 function App() {
   return (
     <Router>
-      <div className="grid">
+      <div className="grid md:px-10 max-h-screen overflow-auto">
         <header></header>
         <NavigationBar></NavigationBar>
         <main>

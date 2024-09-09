@@ -141,7 +141,7 @@ const BookingForm = ({ updateTimes, availableTimes, occations }) => {
                 type="text"
                 name="firstName"
                 id="firstName"
-                placeholder="First name"
+                placeholder="Enter first name"
                 className={inputClass}
               />
               <ErrorMessage
@@ -156,7 +156,7 @@ const BookingForm = ({ updateTimes, availableTimes, occations }) => {
                 type="text"
                 name="lastName"
                 id="lastName"
-                placeholder="Last name"
+                placeholder="Enter last name"
                 className={inputClass}
               />
               <ErrorMessage
@@ -171,7 +171,7 @@ const BookingForm = ({ updateTimes, availableTimes, occations }) => {
                 type="text"
                 name="email"
                 id="email"
-                placeholder="Email"
+                placeholder="Enter email"
                 className={inputClass}
               />
               <ErrorMessage
@@ -187,7 +187,7 @@ const BookingForm = ({ updateTimes, availableTimes, occations }) => {
                 type="text"
                 name="mobile"
                 id="mobile"
-                placeholder="Mobile number"
+                placeholder="Enter mobile number"
                 className={inputClass}
               />
               <ErrorMessage
