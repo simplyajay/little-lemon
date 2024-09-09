@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { generateRandomTimes } from "../pages/BookingPage";
-import { timesReducer } from "../pages/BookingPage";
+//import { generateRandomTimes } from "../pages/BookingPage";
+//import { timesReducer } from "../pages/BookingPage";
 import BookingPage from "../pages/BookingPage";
 
 describe("generateRandomTimes", () => {
