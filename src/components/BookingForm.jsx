@@ -1,24 +1,34 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CustomDatePicker from "./CustomDatePicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const BookingForm = () => {
+const BookingForm = ({ updateTimes, availableTimes }) => {
   const [bookDate, setBookDate] = useState(null);
-  const timings = [
-    { id: 1, time: "17:00" },
-    { id: 2, time: "18:00" },
-    { id: 3, time: "19:00" },
-    { id: 4, time: "20:00" },
-    { id: 5, time: "21:00" },
-    { id: 6, time: "22:00" },
-  ];
+  const [selectedTime, setSelectedTime] = useState("");
+
+  const timings = availableTimes || [];
+
+  // Reset selected time when timings change
+  useEffect(() => {
+    setSelectedTime("");
+  }, [timings]);
 
   const occations = [
     { id: 1, title: "Birthday" },
     { id: 2, title: "Anniversary" },
     { id: 3, title: "Wedding" },
   ];
+
+  const isSunday = (date) => {
+    const day = date.getDay(date);
+    return day !== 0;
+  };
+
+  // Set the minimum date to tomorrow to exclude today and past dates
+  const today = new Date();
+  const minDate = new Date(today);
+  minDate.setDate(today.getDate() + 1);
 
   const inputClass = "p-1 rounded-lg";
 
@@ -29,18 +39,33 @@ const BookingForm = () => {
         <CustomDatePicker
           id="date-picker"
           iconSize={18}
-          placeholderText="dd/mm/yyyy"
+          placeholderText="Reservation date"
           className={inputClass}
           selected={bookDate}
-          onChange={(date) => setBookDate(date)}
+          filterDate={isSunday}
+          minDate={minDate}
+          onChange={(date) => {
+            setBookDate(date);
+            updateTimes();
+          }}
         ></CustomDatePicker>
       </div>
 
       <div className="flex flex-col">
         <label htmlFor="res-time">Time</label>
-        <select name="time" id="res-time" required className={inputClass}>
-          {timings.map((time, key) => (
-            <option key={key}>{time.time}</option>
+        <select
+          name="time"
+          id="res-time"
+          required
+          className={inputClass}
+          value={selectedTime}
+          onChange={(e) => setSelectedTime(e.target.value)}
+        >
+          <option value="" disabled>
+            Select a time
+          </option>
+          {timings.map((time) => (
+            <option key={time.id}>{time.time}</option>
           ))}
         </select>
       </div>
@@ -49,7 +74,7 @@ const BookingForm = () => {
         <label htmlFor="guests">Party size</label>
         <input
           type="number"
-          placeholder="1"
+          placeholder="Number of guests"
           min={1}
           max={6}
           id="guests"
