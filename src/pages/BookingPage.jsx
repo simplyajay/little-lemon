@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useReducer } from "react";
 import BookingForm from "../components/BookingForm";
 
-const generateRandomTimes = (totalTimes) => {
+export const generateRandomTimes = (totalTimes) => {
   const times = [
     { id: 1, time: "17:00" },
     { id: 2, time: "18:00" },
@@ -19,7 +19,7 @@ const generateRandomTimes = (totalTimes) => {
   return cutTimes.sort((a, b) => a.time.localeCompare(b.time));
 };
 
-const timesReducer = (state, action) => {
+export const timesReducer = (state, action) => {
   switch (action.type) {
     case "UPDATE_TIMES":
       return generateRandomTimes(4);
