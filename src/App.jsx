@@ -30,13 +30,16 @@ function App() {
   const updateNavHeight = () => {
     //get navbar height, it will be used as a padding for the main element
     const navbar = document.querySelector(".sticky-nav");
+
     if (navbar) {
       setNavHeight(navbar.offsetHeight);
+      console.log("App navbar height:", navbar.offsetHeight);
     }
   };
 
   useEffect(() => {
     updateNavHeight();
+
     // Update navbar height on window resize
     window.addEventListener("resize", updateNavHeight);
 
@@ -49,7 +52,7 @@ function App() {
       <div className="grid max-h-screen">
         <header></header>
         <NavigationBar></NavigationBar>
-        <main className="md:px-10" style={{ paddingTop: `${navHeight}px` }}>
+        <main className="md:px-10">
           <Routes>
             <Route path="/" element={<MainLayout></MainLayout>}></Route>
             <Route

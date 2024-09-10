@@ -17,9 +17,11 @@ html {
 
 .sticky-nav {
   top: 0;
-  position: fixed;
-  background-color: rgba(186, 210, 255, 0.5);
-  transition: transform 0.2s ease;
+  position: sticky;
+  z-index: 1000;
+  transition:
+    transform 0.2s ease,
+    background-color 0.1s ease-in-out;
   transform: translateY(0);
 }
 

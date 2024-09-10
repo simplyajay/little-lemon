@@ -11,6 +11,7 @@ export default {
         customGreen: "#495E57",
         customYellow: "#F4CE14",
         customGray: "#EDEFEE",
+        navbarcolor: "#bad2ff",
       },
     },
   },

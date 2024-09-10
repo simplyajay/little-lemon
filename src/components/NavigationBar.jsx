@@ -3,19 +3,26 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/Logo.svg";
 
 const NavigationBar = () => {
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [isNavbarVisible, setisNavbarVisible] = useState(true);
+  const [isNavbarOnTop, setIsNavbarOnTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY - lastScrollY > 10) {
+      if (currentScrollY > lastScrollY) {
         // Scrolling down
-        setIsHeaderVisible(false);
-      } else if (lastScrollY - currentScrollY > 10) {
+        setisNavbarVisible(false);
+      } else {
         // Scrolling up
-        setIsHeaderVisible(true);
+        setisNavbarVisible(true);
+      }
+
+      if (currentScrollY === 0) {
+        setIsNavbarOnTop(true);
+      } else {
+        setIsNavbarOnTop(false);
       }
 
       // Update lastScrollY to current window.scrollY
@@ -37,7 +44,13 @@ const NavigationBar = () => {
       setTimeout(() => {
         const section = document.querySelector(link);
         if (section) {
-          section.scrollIntoView({ behavior: "smooth", block: "start" });
+          const sectionRect = section.getBoundingClientRect();
+          const middlePosition =
+            sectionRect.top +
+            window.scrollY -
+            window.innerHeight / 2 +
+            sectionRect.height / 2;
+          window.scrollTo({ top: middlePosition, behavior: "smooth" });
         }
       }, 0);
     } else {
@@ -56,9 +69,11 @@ const NavigationBar = () => {
 
   return (
     <nav
-      className={`sticky-nav ${isHeaderVisible ? "show" : "hide"} flex flex-col md:flex-row items-center justify-between py-5 md:px-36 z-50 shadow-md w-full`}
+      className={`${isNavbarVisible ? "show" : "hide"} ${isNavbarOnTop ? "bg-transparent" : "bg-navbarcolor shadow-md"} 
+      sticky-nav flex flex-col md:flex-row items-center 
+      justify-between py-5 md:px-36 w-full`}
     >
-      <img className="md:w-56 w-44" src={logo} alt="little-lemon-logo" />
+      <img className="md:w-56 w-44 h-auto" src={logo} alt="little-lemon-logo" />
       <ul className="flex flex-col flex-1 md:flex-row justify-evenly items-center">
         {links.map((link, key) => (
           <li key={key}>

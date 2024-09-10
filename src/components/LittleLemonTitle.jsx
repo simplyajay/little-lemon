@@ -6,8 +6,12 @@ const LittleLemonTitle = (props) => {
       {...props}
       className={`${props.className} flex flex-col justify-center`}
     >
-      <h1 className="text-5xl text-customYellow font-markazi">Little Lemon</h1>
-      <h1 className="text-4xl text-customGray font-markazi">Chicago</h1>
+      <h1 className={`${props.titlesize} text-customYellow font-markazi`}>
+        Little Lemon
+      </h1>
+      <h1 className={`${props.subtitlesize} text-customGray font-markazi`}>
+        Chicago
+      </h1>
     </div>
   );
 };
