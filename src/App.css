@@ -16,8 +16,10 @@ html {
 }
 
 .sticky-nav {
+  top: 0;
+  position: fixed;
   background-color: rgba(186, 210, 255, 0.5);
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   transform: translateY(0);
 }
 

@@ -8,10 +8,12 @@ const NavigationBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY - lastScrollY > 10) {
         // Scrolling down
         setIsHeaderVisible(false);
-      } else {
+      } else if (lastScrollY - currentScrollY > 10) {
         // Scrolling up
         setIsHeaderVisible(true);
       }
@@ -54,7 +56,7 @@ const NavigationBar = () => {
 
   return (
     <nav
-      className={`sticky-nav ${isHeaderVisible ? "show" : "hide"} flex flex-col md:flex-row items-center justify-between py-5 md:px-36 fixed top-0 z-50 shadow-md w-full`}
+      className={`sticky-nav ${isHeaderVisible ? "show" : "hide"} flex flex-col md:flex-row items-center justify-between py-5 md:px-36 z-50 shadow-md w-full`}
     >
       <img className="md:w-56 w-44" src={logo} alt="little-lemon-logo" />
       <ul className="flex flex-col flex-1 md:flex-row justify-evenly items-center">
