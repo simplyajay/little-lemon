@@ -4,9 +4,9 @@ import Restaurant from "../assets/restaurant.png";
 
 const HomePage = () => {
   return (
-    <div className="border border-solid border-pink-500">
-      <div className="min-h-48 w-full bg-customGreen flex gap-3 p-5">
-        <div className="p-10 md:max-w-md flex flex-col gap-10">
+    <div className="p-5 menu-grid-container">
+      <div className="menu-cover bg-customGreen p-10 shadow-lg rounded-xl">
+        <div className=" p-5 md:max-w-md h-auto flex flex-col justify-evenly gap-10">
           <LittleLemonTitle titlesize="text-6xl" subtitlesize="text-5xl" />
           <h1 className="text-customGray">
             We are a family owned Mediterranean restaurant, focused on
@@ -16,13 +16,13 @@ const HomePage = () => {
             Book a reservation
           </button>
         </div>
-        <div className="p-5 hidden md:flex flex-1 items-center justify-center ">
-          <img
-            className="rounded-xl max-h-96"
-            src={Restaurant}
-            alt="Bruchetta image"
-          />
-        </div>
+      </div>
+      <div className="menu-image-wrapper p-5 hidden md:block">
+        <img
+          className="menu-img rounded-xl shadow-xl border border-solid border-gray-500 "
+          src={Restaurant}
+          alt="Restaurant image"
+        />
       </div>
     </div>
   );
