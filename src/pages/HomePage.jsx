@@ -12,14 +12,14 @@ const HomePage = () => {
             We are a family owned Mediterranean restaurant, focused on
             traditional recipes served with a modern twist.
           </h1>
-          <button className="border border-solid border-gray-600 rounded-lg bg-customYellow font-karla p-1 text-lg">
+          <button className="border border-solid border-black rounded-lg bg-customYellow font-karla p-1 text-lg">
             Book a reservation
           </button>
         </div>
       </div>
       <div className="menu-image-wrapper p-5 hidden md:block">
         <img
-          className="menu-img rounded-xl shadow-xl border border-solid border-gray-500 "
+          className="menu-img rounded-xl shadow-xl border-[3px] border-solid border-gray-400 "
           src={Restaurant}
           alt="Restaurant image"
         />

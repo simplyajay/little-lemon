@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useRef } from "react";
 import DatePicker from "react-datepicker";
 import { IoCalendarOutline } from "react-icons/io5";
 

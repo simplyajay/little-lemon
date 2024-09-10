@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import HighlightsPage from "./pages/HighlightsPage";
 import AboutPage from "./pages/AboutPage";
 import BookingPage from "./pages/BookingPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import "./App.css";
 import NavigationBar from "./components/NavigationBar";
+import "./App.css";
 
-const MainLayout = () => {
+const MainLayout = ({ sectionRefs }) => {
   return (
     <div>
-      <section id="home">
+      <section ref={sectionRefs.home} id="home">
         <HomePage />
       </section>
-      <section id="menu">
+      <section ref={sectionRefs.menu} id="menu">
         <HighlightsPage />
       </section>
-      <section id="about">
+      <section ref={sectionRefs.about} id="about">
         <AboutPage />
       </section>
     </div>
@@ -25,14 +25,22 @@ const MainLayout = () => {
 };
 
 function App() {
+  const sectionRefs = {
+    home: useRef(null),
+    menu: useRef(null),
+    about: useRef(null),
+  };
   return (
     <Router>
       <div className="grid max-h-screen">
         <header></header>
-        <NavigationBar></NavigationBar>
+        <NavigationBar sectionRefs={sectionRefs}></NavigationBar>
         <main className="md:px-10">
           <Routes>
-            <Route path="/" element={<MainLayout></MainLayout>}></Route>
+            <Route
+              path="/"
+              element={<MainLayout sectionRefs={sectionRefs}></MainLayout>}
+            ></Route>
             <Route
               path="/reservation"
               element={<BookingPage></BookingPage>}

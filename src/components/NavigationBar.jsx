@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/Logo.svg";
 
-const NavigationBar = () => {
+const NavigationBar = ({ sectionRefs }) => {
   const [isNavbarVisible, setisNavbarVisible] = useState(true);
   const [isNavbarOnTop, setIsNavbarOnTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -42,9 +42,11 @@ const NavigationBar = () => {
     if (link.startsWith("#")) {
       navigate("/");
       setTimeout(() => {
-        const section = document.querySelector(link);
-        if (section) {
-          const sectionRect = section.getBoundingClientRect();
+        const sectionId = link.slice(1);
+        const sectionRef = sectionRefs[sectionId];
+
+        if (sectionRef && sectionRef.current) {
+          const sectionRect = sectionRef.current.getBoundingClientRect();
           const middlePosition =
             sectionRect.top +
             window.scrollY -

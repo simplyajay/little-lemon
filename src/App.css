@@ -17,6 +17,8 @@ html {
   box-sizing: border-box;
 }
 
+/* Navigation bar */
+
 .sticky-nav {
   top: 0;
   position: sticky;
@@ -30,6 +32,10 @@ html {
 .sticky-nav.hide {
   transform: translateY(-100%);
 }
+
+/* Navigation bar */
+
+/* Home page */
 
 .menu-grid-container {
   width: 100%;
@@ -62,3 +68,19 @@ html {
 .menu-cover {
   grid-row: 1 / 2;
 }
+
+/* Home page */
+
+/* Slider */
+
+.slider-container {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.slider-card-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Slider */
