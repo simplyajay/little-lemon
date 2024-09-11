@@ -2,7 +2,7 @@ import React from "react";
 
 const CustomFoodCard = (props) => {
   return (
-    <div className="flex flex-col rounded-lg border border-solid border-black bg-white max-w-[15rem]">
+    <div className="flex flex-col rounded-lg border-b-4 border-t-4 border-solid border-gray-400 bg-white max-w-[15rem]">
       <div className="">
         <img
           className="rounded-lg object-cover"

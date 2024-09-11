@@ -11,7 +11,7 @@ const HighlightsPage = () => {
       title: "Bruchetta",
       price: 12,
       description:
-        "This is a very delicious food. This is a very delicious food",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ const HighlightsPage = () => {
       title: "Bruchetta",
       price: 12,
       description:
-        "This is a very delicious food. This is a very delicious food ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
       id: 3,
@@ -29,7 +29,7 @@ const HighlightsPage = () => {
       title: "Bruchetta",
       price: 12,
       description:
-        "This is a very delicious food. This is a very delicious food",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       id: 4,
@@ -38,19 +38,19 @@ const HighlightsPage = () => {
       title: "Bruchetta",
       price: 12,
       description:
-        "This is a very delicious food. This is a very delicious food",
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
   ];
 
   return (
-    <div className="px-5 py-10 flex flex-col gap-5 border-b-8  border-t-8 border-solid border-blue-200 rounded-2xl shadow-lg">
+    <div className="px-5 min-h-screen py-10 flex flex-col gap-5 border-b-8  border-t-8 border-solid border-blue-200 shadow-lg">
       <div className="p-5 flex justify-between">
         <h1 className="text-3xl font-karla font-bold">Specials</h1>
         <button className="p-2 rounded-lg border border-solid border-gray-600 bg-customYellow ">
           View more
         </button>
       </div>
-      <div className="flex flex-wrap gap-2 justify-evenly">
+      <div className="flex flex-wrap gap-10 justify-evenly p-5">
         {specials.map((child) => {
           return (
             <CustomFoodCard

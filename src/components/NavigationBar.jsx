@@ -62,9 +62,9 @@ const NavigationBar = ({ sectionRefs }) => {
   };
   const links = [
     { title: "Home", link: "#home" },
-    { title: "About", link: "#about" },
     { title: "Menu", link: "#menu" },
     { title: "Testimonials", link: "#testimonials" },
+    { title: "About", link: "#about" },
     { title: "Reservations", link: "/reservation" },
     { title: "Order Online", link: "/order" },
     { title: "Log in", link: "/login" },
@@ -76,7 +76,12 @@ const NavigationBar = ({ sectionRefs }) => {
       sticky-nav flex flex-col md:flex-row items-center 
       justify-between py-5 md:px-24 lg:px-36 xl:px-48 w-full font-karla`}
     >
-      <img className="md:w-56 w-44 h-auto" src={logo} alt="little-lemon-logo" />
+      <img
+        className="md:w-56 w-44 h-auto hover:cursor-pointer"
+        src={logo}
+        alt="little-lemon-logo"
+        onClick={(e) => handleNavigation("#home")}
+      />
       <ul className="flex flex-col flex-1 md:flex-row justify-evenly items-center">
         {links.map((link, key) => (
           <li key={key}>

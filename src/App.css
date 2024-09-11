@@ -57,36 +57,13 @@ html {
   max-height: 30rem;
   align-self: center;
   grid-column: 1 / 6;
+  grid-row: 1 / 5;
 }
 
 .menu-image-wrapper {
   z-index: 10;
   grid-column: 3 / -1;
-}
-
-.menu-image-wrapper,
-.menu-cover {
-  grid-row: 1 / 2;
+  grid-row: 3/4;
 }
 
 /* Home page */
-
-/* Carousel */
-
-.carousel-content {
-  display: flex;
-  transition: all 250ms linear;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.carousel-content::-webkit-scrollbar,
-.carousel-content::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel-content > * {
-  width: 100%;
-  flex-shrink: 0;
-  flex-grow: 1;
-}

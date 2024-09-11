@@ -40,7 +40,7 @@ function App() {
       <div className="grid max-h-screen">
         <header></header>
         <NavigationBar sectionRefs={sectionRefs}></NavigationBar>
-        <main className="md:px-10">
+        <main>
           <Routes>
             <Route
               path="/"

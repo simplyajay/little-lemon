@@ -11,7 +11,7 @@ const TestimonialsPage = () => {
       name: "Daryl Dixon",
       position: "Biker",
       description:
-        "This is a very long testimony. Another sentence of this testimony.",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     },
     {
       id: 2,
@@ -19,7 +19,8 @@ const TestimonialsPage = () => {
       image: userImage,
       name: "Daryl Dixon",
       position: "Biker",
-      description: "This is a testimony",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       id: 3,
@@ -27,7 +28,8 @@ const TestimonialsPage = () => {
       image: userImage,
       name: "Daryl Dixon",
       position: "Biker",
-      description: "This is a testimony",
+      description:
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       id: 4,
@@ -35,7 +37,7 @@ const TestimonialsPage = () => {
       image: userImage,
       name: "Daryl Dixon",
       position: "Biker",
-      description: "This is a testimony",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
       id: 5,
@@ -43,13 +45,14 @@ const TestimonialsPage = () => {
       image: userImage,
       name: "Daryl Dixon",
       position: "Biker",
-      description: "This is a testimony",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
   ];
   return (
-    <div className="px-5 py-10 flex flex-col gap-10 items-center justify-between ">
+    <div className="min-h-screen px-5 py-10 flex flex-col items-center justify-evenly">
       <h1 className="font-karla text-5xl font-semibold">Testimonials</h1>
-      <div className="flex flex-wrap gap-10 justify-around p-5  w-full  rounded-2xl">
+      <div className="flex flex-wrap gap-10 justify-around p-5  w-full rounded-2xl">
         {testimonials.map((child) => (
           <CustomUserCard
             key={child.id}
