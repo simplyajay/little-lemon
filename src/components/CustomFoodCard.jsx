@@ -1,6 +1,6 @@
 import React from "react";
 
-const CustomCard = (props) => {
+const CustomFoodCard = (props) => {
   return (
     <div className="flex flex-col rounded-lg border border-solid border-black bg-white max-w-[15rem]">
       <div className="">
@@ -30,4 +30,4 @@ const CustomCard = (props) => {
   );
 };
 
-export default CustomCard;
+export default CustomFoodCard;

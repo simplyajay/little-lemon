@@ -7,6 +7,7 @@ import BookingPage from "./pages/BookingPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import NavigationBar from "./components/NavigationBar";
 import "./App.css";
+import TestimonialsPage from "./pages/TestimonialsPage";
 
 const MainLayout = ({ sectionRefs }) => {
   return (
@@ -16,6 +17,9 @@ const MainLayout = ({ sectionRefs }) => {
       </section>
       <section ref={sectionRefs.menu} id="menu">
         <HighlightsPage />
+      </section>
+      <section ref={sectionRefs.testimonials} id="testimonials">
+        <TestimonialsPage />
       </section>
       <section ref={sectionRefs.about} id="about">
         <AboutPage />
@@ -29,6 +33,7 @@ function App() {
     home: useRef(null),
     menu: useRef(null),
     about: useRef(null),
+    testimonials: useRef(null),
   };
   return (
     <Router>

@@ -64,6 +64,7 @@ const NavigationBar = ({ sectionRefs }) => {
     { title: "Home", link: "#home" },
     { title: "About", link: "#about" },
     { title: "Menu", link: "#menu" },
+    { title: "Testimonials", link: "#testimonials" },
     { title: "Reservations", link: "/reservation" },
     { title: "Order Online", link: "/order" },
     { title: "Log in", link: "/login" },
