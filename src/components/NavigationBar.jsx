@@ -73,7 +73,7 @@ const NavigationBar = ({ sectionRefs }) => {
     <nav
       className={`${isNavbarVisible ? "show" : "hide"} ${isNavbarOnTop ? "bg-transparent" : "bg-navbarcolor shadow-md"} 
       sticky-nav flex flex-col md:flex-row items-center 
-      justify-between py-5 md:px-36 w-full font-karla`}
+      justify-between py-5 md:px-24 lg:px-36 xl:px-48 w-full font-karla`}
     >
       <img className="md:w-56 w-44 h-auto" src={logo} alt="little-lemon-logo" />
       <ul className="flex flex-col flex-1 md:flex-row justify-evenly items-center">

@@ -71,16 +71,22 @@ html {
 
 /* Home page */
 
-/* Slider */
+/* Carousel */
 
-.slider-container {
-  overflow-x: auto; /* Enable horizontal scrolling */
-  -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
+.carousel-content {
+  display: flex;
+  transition: all 250ms linear;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.slider-card-container::-webkit-scrollbar {
+.carousel-content::-webkit-scrollbar,
+.carousel-content::-webkit-scrollbar {
   display: none;
 }
 
-/* Slider */
+.carousel-content > * {
+  width: 100%;
+  flex-shrink: 0;
+  flex-grow: 1;
+}

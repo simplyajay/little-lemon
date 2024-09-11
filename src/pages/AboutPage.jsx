@@ -11,15 +11,6 @@ const AboutPage = () => {
       <LittleLemonTitle />
       <LittleLemonTitle />
       <LittleLemonTitle />
-      <LittleLemonTitle />
-      <LittleLemonTitle />
-      <LittleLemonTitle />
-      <LittleLemonTitle />
-      <LittleLemonTitle />
-      <LittleLemonTitle />
-      <LittleLemonTitle />
-      <LittleLemonTitle />
-      <LittleLemonTitle />
     </div>
   );
 };

@@ -1,13 +1,12 @@
 import React from "react";
 import Bruchetta from "../assets/bruchetta.svg";
 import CustomCard from "../components/CustomCard";
-import CustomSlider from "../components/CustomSlider";
 
 const HighlightsPage = () => {
   const specials = [
     {
       id: 1,
-      logo: Bruchetta,
+      image: Bruchetta,
       alt: "image img",
       title: "Bruchetta",
       price: 12,
@@ -16,7 +15,7 @@ const HighlightsPage = () => {
     },
     {
       id: 2,
-      logo: Bruchetta,
+      image: Bruchetta,
       alt: "image img",
       title: "Bruchetta",
       price: 12,
@@ -25,7 +24,7 @@ const HighlightsPage = () => {
     },
     {
       id: 3,
-      logo: Bruchetta,
+      image: Bruchetta,
       alt: "image img",
       title: "Bruchetta",
       price: 12,
@@ -34,7 +33,7 @@ const HighlightsPage = () => {
     },
     {
       id: 4,
-      logo: Bruchetta,
+      image: Bruchetta,
       alt: "image img",
       title: "Bruchetta",
       price: 12,
@@ -43,7 +42,7 @@ const HighlightsPage = () => {
     },
     {
       id: 5,
-      logo: Bruchetta,
+      image: Bruchetta,
       alt: "image img",
       title: "Bruchetta",
       price: 12,
@@ -52,7 +51,16 @@ const HighlightsPage = () => {
     },
     {
       id: 6,
-      logo: Bruchetta,
+      image: Bruchetta,
+      alt: "image img",
+      title: "Bruchetta",
+      price: 12,
+      description:
+        "This is a very delicious food. This is a very delicious food",
+    },
+    {
+      id: 7,
+      image: Bruchetta,
       alt: "image img",
       title: "Bruchetta",
       price: 12,
@@ -69,20 +77,18 @@ const HighlightsPage = () => {
           View more
         </button>
       </div>
-      <div className="p-1">
-        <CustomSlider cardsPerSlide={4}>
-          {specials.map((child) => (
+      <div className="flex flex-wrap gap-2 justify-evenly">
+        {specials.map((child) => {
+          return (
             <CustomCard
               key={child.id}
-              logo={child.logo}
-              alt={child.alt}
-              title={`${child.title} ${child.id}`}
+              image={child.image}
+              title={child.title}
               price={child.price}
               description={child.description}
-              buttontext="Order for delivery"
             />
-          ))}
-        </CustomSlider>
+          );
+        })}
       </div>
     </div>
   );
