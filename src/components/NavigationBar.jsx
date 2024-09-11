@@ -10,6 +10,7 @@ const NavigationBar = ({ sectionRefs }) => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      console.log(isNavbarVisible);
 
       if (currentScrollY > lastScrollY) {
         // Scrolling down

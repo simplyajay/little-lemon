@@ -21,7 +21,7 @@ html {
 
 .sticky-nav {
   top: 0;
-  position: sticky;
+  position: fixed;
   z-index: 1000;
   transition:
     transform 0.2s ease,
@@ -32,8 +32,6 @@ html {
 .sticky-nav.hide {
   transform: translateY(-100%);
 }
-
-/* Navigation bar */
 
 /* Home page */
 
@@ -65,5 +63,3 @@ html {
   grid-column: 3 / -1;
   grid-row: 3/4;
 }
-
-/* Home page */

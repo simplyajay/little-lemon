@@ -12,7 +12,11 @@ import TestimonialsPage from "./pages/TestimonialsPage";
 const MainLayout = ({ sectionRefs }) => {
   return (
     <div>
-      <section ref={sectionRefs.home} id="home">
+      <section
+        className="mt-[250px] md:mt-[101px]"
+        ref={sectionRefs.home}
+        id="home"
+      >
         <HomePage />
       </section>
       <section ref={sectionRefs.menu} id="menu">
@@ -38,8 +42,10 @@ function App() {
   return (
     <Router>
       <div className="grid max-h-screen">
-        <header></header>
-        <NavigationBar sectionRefs={sectionRefs}></NavigationBar>
+        <header>
+          <NavigationBar sectionRefs={sectionRefs}></NavigationBar>
+        </header>
+
         <main>
           <Routes>
             <Route
