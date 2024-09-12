@@ -1,44 +1,35 @@
 import React from "react";
-import { useState, useReducer } from "react";
+import { useState, useReducer, useEffect } from "react";
 import BookingForm from "../components/BookingForm";
 import LittleLemonTitle from "../components/LittleLemonTitle";
+import { fetchAPI, submitAPI } from "../api/api";
 
-const generateRandomTimes = (totalTimes) => {
-  const times = [
-    { id: 1, time: "17:00" },
-    { id: 2, time: "18:00" },
-    { id: 3, time: "19:00" },
-    { id: 4, time: "20:00" },
-    { id: 5, time: "21:00" },
-    { id: 6, time: "22:00" },
-  ];
-
-  const shuffledTimes = times.sort(() => Math.random() - 0.5);
-
-  const cutTimes = shuffledTimes.slice(0, totalTimes);
-
-  return cutTimes.sort((a, b) => a.time.localeCompare(b.time));
+const initializeTimes = (selectedDate) => {
+  if (selectedDate) {
+    const times = fetchAPI(selectedDate);
+    return times;
+  }
+  return [];
 };
 
 const timesReducer = (state, action) => {
   switch (action.type) {
     case "UPDATE_TIMES":
-      return generateRandomTimes(4);
-
+      return initializeTimes(action.payload);
     default:
       return state;
   }
 };
 const BookingPage = () => {
   const [availableTimes, dispatch] = useReducer(timesReducer, [], () =>
-    generateRandomTimes(0)
+    initializeTimes()
   );
 
-  const updateTimes = () => {
-    dispatch({ type: "UPDATE_TIMES" });
+  const updateTimes = (bookingDate) => {
+    dispatch({ type: "UPDATE_TIMES", payload: bookingDate });
   };
 
-  const occations = [
+  const occasions = [
     { id: 1, title: "Ordinary" },
     { id: 2, title: "Anniversary" },
     { id: 3, title: "Wedding" },
@@ -51,17 +42,17 @@ const BookingPage = () => {
         <LittleLemonTitle titlesize="text-5xl" subtitlesize="text-4xl" />
         <div className="text-center">
           <h2 className="text-customGray">
-            Opening times: Monday - Saturday 10am - 9pm.
+            Opening times: Monday - Saturday 10am - 12pm.
           </h2>
           <h2 className="text-customGray">
-            Food is served until 8pm Monday - Saturday.
+            Food is served until 11pm Monday - Saturday.
           </h2>
         </div>
       </div>
       <BookingForm
         updateTimes={updateTimes}
         availableTimes={availableTimes}
-        occations={occations}
+        occasions={occasions}
       ></BookingForm>
     </div>
   );

@@ -1,20 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
 import { validationSchema } from "../validation/BookingFormValidation";
 import CustomDatePicker from "./CustomDatePicker";
 import "react-datepicker/dist/react-datepicker.css";
+import FormField from "./FormField";
 
-const BookingForm = ({ updateTimes, availableTimes, occations }) => {
-  const [bookDate, setBookDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState("Select a Time");
-
+const BookingForm = ({ updateTimes, availableTimes, occasions }) => {
   const timings = availableTimes || [];
-
-  // Reset selected time when timings change
-  useEffect(() => {
-    setSelectedTime("Select a Time");
-  }, [timings]);
 
   // Set the minimum date to tomorrow to exclude today and past dates
   const today = new Date();
@@ -24,6 +17,16 @@ const BookingForm = ({ updateTimes, availableTimes, occations }) => {
   //excluded dates
   const filteredDates = (date) => date.getDay() !== 0;
 
+  const ResetTimeField = () => {
+    const { setFieldValue } = useFormikContext();
+
+    useEffect(() => {
+      setFieldValue("time", "");
+    }, [timings, setFieldValue]);
+
+    return null;
+  };
+
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -32,11 +35,11 @@ const BookingForm = ({ updateTimes, availableTimes, occations }) => {
     date: null,
     time: "",
     guests: "",
-    occation: "Ordinary",
+    occasion: "Ordinary",
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    alert("form submitted");
+    console.log(values);
     resetForm();
   };
 
@@ -49,6 +52,7 @@ const BookingForm = ({ updateTimes, availableTimes, occations }) => {
       onSubmit={handleSubmit}
     >
       <Form className="items-center min-w-xs md:w-1/2 w-9/12 p-5 shadow-lg bg-blue-100 border border-solid border-gray-400 rounded-xl">
+        <ResetTimeField />
         <h1 className="text-center text-xl">
           <strong>Reservation Details</strong>
         </h1>
@@ -65,13 +69,12 @@ const BookingForm = ({ updateTimes, availableTimes, occations }) => {
                     iconSize={18}
                     placeholderText="Reservation date"
                     className={inputClass}
-                    selected={bookDate}
+                    selected={form.values.date}
                     filterDate={filteredDates}
                     minDate={minDate}
                     onChange={(date) => {
-                      setBookDate(date);
                       form.setFieldValue("date", date);
-                      updateTimes();
+                      updateTimes(date);
                     }}
                   ></CustomDatePicker>
                   <ErrorMessage
@@ -82,128 +85,67 @@ const BookingForm = ({ updateTimes, availableTimes, occations }) => {
                 </div>
               )}
             </Field>
-            <div className="flex flex-col">
-              <label htmlFor="res-time">Time</label>
-              <Field
-                name="time"
-                as="select"
-                id="res-time"
-                className={inputClass}
-              >
-                <option value="" disabled>
-                  Select a time
-                </option>
-                {timings.map((time) => (
-                  <option key={time.id}>{time.time}</option>
-                ))}
-              </Field>
-              <ErrorMessage
-                className="text-red-500 text-sm"
-                name="time"
-                component="div"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="guests">Party size</label>
-              <Field
-                type="number"
-                name="guests"
-                id="guests"
-                placeholder="Number of guests"
-                className={inputClass}
-              />
-              <ErrorMessage
-                className="text-red-500 text-sm"
-                name="guests"
-                component="div"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="res-occation">Occation</label>
-              <Field
-                name="occation"
-                as="select"
-                id="res-occation"
-                className={inputClass}
-              >
-                {occations.map((occation) => (
-                  <option key={occation.id} value={occation.title}>
-                    {occation.title}
-                  </option>
-                ))}
-              </Field>
-            </div>
+            <FormField
+              label="Time"
+              name="time"
+              as="select"
+              defaultoption={{ value: "", label: "Select a Time" }}
+              options={timings.map((time) => ({ value: time, label: time }))}
+            />
+
+            <FormField
+              label="Party Size"
+              name="guests"
+              placeholder="Number of guests"
+              type="number"
+            />
+
+            <FormField
+              label="Occasion"
+              name="occasion"
+              as="select"
+              options={occasions.map((occasion) => ({
+                value: occasion.id,
+                label: occasion.title,
+              }))}
+            />
           </div>
           <div className="flex flex-col gap-1 md:gap-3 flex-1 p-3 ">
-            <div className="flex flex-col">
-              <label htmlFor="firstName">First Name</label>
-              <Field
-                type="text"
-                name="firstName"
-                id="firstName"
-                placeholder="Enter first name"
-                className={inputClass}
-              />
-              <ErrorMessage
-                className="text-red-500 text-sm"
-                name="firstName"
-                component="div"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="lastName">Last Name</label>
-              <Field
-                type="text"
-                name="lastName"
-                id="lastName"
-                placeholder="Enter last name"
-                className={inputClass}
-              />
-              <ErrorMessage
-                className="text-red-500 text-sm"
-                name="lastName"
-                component="div"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="email">Email</label>
-              <Field
-                type="text"
-                name="email"
-                id="email"
-                placeholder="Enter email"
-                className={inputClass}
-              />
-              <ErrorMessage
-                className="text-red-500 text-sm"
-                name="email"
-                component="div"
-              />
-            </div>
+            <FormField
+              label="First name"
+              name="firstName"
+              placeholder="Enter first name"
+              type="text"
+            />
 
-            <div className="flex flex-col">
-              <label htmlFor="mobile">Mobile number</label>
-              <Field
-                type="text"
-                name="mobile"
-                id="mobile"
-                placeholder="Enter mobile number"
-                className={inputClass}
-              />
-              <ErrorMessage
-                className="text-red-500 text-sm"
-                name="mobile"
-                component="div"
-              />
-            </div>
+            <FormField
+              label="Last name"
+              name="lastName"
+              placeholder="Enter last name"
+              type="text"
+            />
+
+            <FormField
+              label="Email"
+              name="email"
+              placeholder="Enter email address"
+              type="email"
+            />
+
+            <FormField
+              label="Mobile Number"
+              name="mobile"
+              placeholder="Enter mobile number"
+              type="text"
+            />
           </div>
         </div>
         <div className="flex justify-center p-3">
           <button
             type="submit"
-            className="border border-solid border-black rounded-lg px-3 py-1 bg-yellow-200"
+            className="border border-solid border-black rounded-lg px-3 py-1 bg-customYellow"
           >
-            Make your reservartion
+            Make your reservation
           </button>
         </div>
       </Form>
