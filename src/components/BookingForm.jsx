@@ -1,12 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
-import { validationSchema } from "../validation/BookingFormValidation";
+import { reservationValidationSchema } from "../validation/BookingFormValidation";
 import CustomDatePicker from "./CustomDatePicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FormField from "./FormField";
 
-const BookingForm = ({ updateTimes, availableTimes, occasions }) => {
+const BookingForm = ({ updateTimes, availableTimes, occasions, submit }) => {
   const timings = availableTimes || [];
 
   // Set the minimum date to tomorrow to exclude today and past dates
@@ -41,14 +41,13 @@ const BookingForm = ({ updateTimes, availableTimes, occasions }) => {
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
+    submit();
   };
-
-  const inputClass = "p-1 rounded-lg min-w-full";
 
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchema}
+      validationSchema={reservationValidationSchema}
       onSubmit={handleSubmit}
     >
       <Form className="items-center min-w-xs md:w-1/2 w-9/12 p-5 shadow-lg bg-blue-100 border border-solid border-gray-400 rounded-xl">
@@ -68,7 +67,7 @@ const BookingForm = ({ updateTimes, availableTimes, occasions }) => {
                     id="date-picker"
                     iconSize={18}
                     placeholderText="Reservation date"
-                    className={inputClass}
+                    className="p-1 rounded-lg min-w-full"
                     selected={form.values.date}
                     filterDate={filteredDates}
                     minDate={minDate}
@@ -143,9 +142,9 @@ const BookingForm = ({ updateTimes, availableTimes, occasions }) => {
         <div className="flex justify-center p-3">
           <button
             type="submit"
-            className="border border-solid border-black rounded-lg px-3 py-1 bg-customYellow"
+            className="border border-solid border-black rounded-lg px-3 py-1 bg-customYellow min-w-64"
           >
-            Make your reservation
+            Next
           </button>
         </div>
       </Form>

@@ -3,6 +3,7 @@ import { useState, useReducer, useEffect } from "react";
 import BookingForm from "../components/BookingForm";
 import LittleLemonTitle from "../components/LittleLemonTitle";
 import { fetchAPI, submitAPI } from "../api/api";
+import PaymentForm from "../components/PaymentForm";
 
 const initializeTimes = (selectedDate) => {
   if (selectedDate) {
@@ -20,13 +21,20 @@ const timesReducer = (state, action) => {
       return state;
   }
 };
+
 const BookingPage = () => {
+  const [isReservationDetailsComplete, setIsReservationDetailsComplete] =
+    useState(false);
   const [availableTimes, dispatch] = useReducer(timesReducer, [], () =>
     initializeTimes()
   );
 
   const updateTimes = (bookingDate) => {
     dispatch({ type: "UPDATE_TIMES", payload: bookingDate });
+  };
+
+  const onSubmit = (val) => {
+    setIsReservationDetailsComplete(val);
   };
 
   const occasions = [
@@ -49,11 +57,16 @@ const BookingPage = () => {
           </h2>
         </div>
       </div>
-      <BookingForm
-        updateTimes={updateTimes}
-        availableTimes={availableTimes}
-        occasions={occasions}
-      ></BookingForm>
+      {!isReservationDetailsComplete ? (
+        <BookingForm
+          updateTimes={updateTimes}
+          availableTimes={availableTimes}
+          occasions={occasions}
+          submit={() => onSubmit(true)}
+        ></BookingForm>
+      ) : (
+        <PaymentForm />
+      )}
     </div>
   );
 };
