@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import HighlightsPage from "./pages/HighlightsPage";
 import AboutPage from "./pages/AboutPage";
+import TestimonialsPage from "./pages/TestimonialsPage";
 import BookingPage from "./pages/BookingPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import NavigationBar from "./components/NavigationBar";
+import FooterNavigation from "./components/FooterNavigation";
 import "./App.css";
-import TestimonialsPage from "./pages/TestimonialsPage";
 
 const MainLayout = ({ sectionRefs }) => {
   return (
@@ -59,7 +60,9 @@ function App() {
             <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
           </Routes>
         </main>
-        <footer></footer>
+        <footer>
+          <FooterNavigation sectionRefs={sectionRefs} />
+        </footer>
       </div>
     </Router>
   );
