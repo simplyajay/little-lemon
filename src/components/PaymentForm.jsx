@@ -6,7 +6,7 @@ import CustomDatePicker from "./CustomDatePicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FormField from "./FormField";
 
-const PaymentForm = () => {
+const PaymentForm = ({ onSubmit }) => {
   const initialValues = {
     cardholdername: "",
     cardnumber: "",
@@ -18,8 +18,8 @@ const PaymentForm = () => {
   const minDate = new Date(today);
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     resetForm();
+    onSubmit("UPDATE_PAYMENT", true);
   };
 
   return (

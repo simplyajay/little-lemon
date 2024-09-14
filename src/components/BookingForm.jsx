@@ -6,7 +6,7 @@ import CustomDatePicker from "./CustomDatePicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FormField from "./FormField";
 
-const BookingForm = ({ updateTimes, availableTimes, occasions, submit }) => {
+const BookingForm = ({ onDateChange, availableTimes, occasions, onSubmit }) => {
   const timings = availableTimes || [];
 
   // Set the minimum date to tomorrow to exclude today and past dates
@@ -39,9 +39,8 @@ const BookingForm = ({ updateTimes, availableTimes, occasions, submit }) => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     resetForm();
-    submit();
+    onSubmit();
   };
 
   return (
@@ -73,7 +72,7 @@ const BookingForm = ({ updateTimes, availableTimes, occasions, submit }) => {
                     minDate={minDate}
                     onChange={(date) => {
                       form.setFieldValue("date", date);
-                      updateTimes(date);
+                      onDateChange(date);
                     }}
                   ></CustomDatePicker>
                   <ErrorMessage
