@@ -6,4 +6,25 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# little-lemon
+
+## Setup
+
+1. **Install Dependencies**
+
+   Run the following command to install all necessary dependencies:
+
+   npm install
+
+2. **Start Development Server**
+
+   npm run dev
+
+3. **Build for Production**
+
+   npm run build
+
+4. **Preview Production Build**
+
+   npm run preview
+
+For more information, refer to the Vite documentation and React documentation.

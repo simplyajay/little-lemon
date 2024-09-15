@@ -1,8 +1,14 @@
 import React from "react";
 import LittleLemonTitle from "../components/LittleLemonTitle";
 import Restaurant from "../assets/restaurant.png";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  const handleButtonClick = () => {
+    navigate("/reservation");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-5">
       <div className="menu-cover bg-customGreen p-10 shadow-xl rounded-xl border-b-8 border-t-8 border-green-300">
@@ -14,7 +20,11 @@ const HomePage = () => {
             traditional recipes served with a modern twist.
           </h1>
 
-          <button className="border border-solid border-black rounded-lg bg-customYellow font-karla p-1 text-lg">
+          <button
+            className="max-w-[70%] xs:md-max-w[30%] md:max-w-[60%] border border-solid
+           border-black rounded-lg bg-customYellow font-karla p-1 text-lg"
+            onClick={handleButtonClick}
+          >
             Book a reservation
           </button>
         </div>
