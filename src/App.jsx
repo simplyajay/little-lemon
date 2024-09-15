@@ -14,7 +14,7 @@ const MainLayout = ({ sectionRefs }) => {
   return (
     <div>
       <section
-        className="mt-[250px] md:mt-[101px]"
+        className="mt-[120px] md:mt-[101px]"
         ref={sectionRefs.home}
         id="home"
       >
@@ -55,7 +55,9 @@ function App() {
             ></Route>
             <Route
               path="/reservation"
-              element={<BookingPage></BookingPage>}
+              element={
+                <BookingPage className="md:mt-[101px] mt:120px"></BookingPage>
+              }
             ></Route>
             <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
           </Routes>

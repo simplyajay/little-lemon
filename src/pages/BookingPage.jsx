@@ -95,7 +95,7 @@ const BookingPage = () => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-10 md:px-10 pb-10 items-center justify-center mt-[101px] h-screen">
+    <div className="w-full flex flex-col gap-10 md:px-10 pb-10 items-center justify-center mt-[142px] md:mt-[101px] h-screen">
       <div className="min-h-48 w-full bg-customGreen p-4 border border-solid flex flex-col gap-3 items-center">
         <LittleLemonTitle titlesize="text-5xl" subtitlesize="text-4xl" />
         <div className="text-center">

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/Logo.svg";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const NavigationBar = ({ sectionRefs }) => {
   const [isNavbarVisible, setisNavbarVisible] = useState(true);
   const [isNavbarOnTop, setIsNavbarOnTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,26 +72,41 @@ const NavigationBar = ({ sectionRefs }) => {
     { title: "Log in", link: "/login" },
   ];
 
+  const handleMenuClick = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
+
   return (
     <nav
-      className={`${isNavbarVisible ? "show" : "hide"} ${isNavbarOnTop ? "bg-transparent" : "bg-navbarcolor shadow-md"} 
+      className={`${isNavbarVisible ? "show" : "hide"}  bg-navbarcolor ${isNavbarOnTop && "md:bg-transparent"} 
       sticky-nav flex flex-col md:flex-row items-center 
-      justify-between py-5 md:px-24 lg:px-36 xl:px-48 w-full font-karla`}
+      justify-between gap-4 md:gap-0 py-5 md:px-24 lg:px-36 xl:px-48 w-full font-karla`}
     >
-      <img
-        className="md:w-56 w-44 h-auto hover:cursor-pointer"
-        src={logo}
-        alt="little-lemon-logo"
-        onClick={(e) => handleNavigation("#home")}
-      />
-      <ul className="flex flex-col flex-1 md:flex-row justify-evenly items-center">
+      <span>
+        <img
+          className="md:w-56 w-44 h-auto hover:cursor-pointer"
+          src={logo}
+          alt="little-lemon-logo"
+          onClick={(e) => handleNavigation("#home")}
+        />
+      </span>
+
+      <div className="md:hidden flex justify-center">
+        <button onClick={handleMenuClick}>
+          <GiHamburgerMenu />
+        </button>
+      </div>
+      <ul
+        className={`${isMobileMenuOpen ? "visible" : "hidden"} transition-all duration-500 ease-in-out md:flex flex-1 md:flex-row justify-evenly items-center gap-5 md:gap-0`}
+      >
         {links.map((link, key) => (
-          <li key={key}>
+          <li key={key} className="text-center">
             <a
               href={link.link}
               onClick={(e) => {
                 e.preventDefault();
                 handleNavigation(link.link);
+                setIsMobileMenuOpen(false);
               }}
             >
               {link.title}
