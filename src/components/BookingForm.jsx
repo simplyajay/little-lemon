@@ -140,6 +140,7 @@ const BookingForm = ({
           <button
             type="submit"
             className="border border-solid border-black rounded-lg p-2 bg-customYellow min-w-28"
+            aria-label="submit form"
           >
             Next
           </button>

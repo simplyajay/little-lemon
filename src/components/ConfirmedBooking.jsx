@@ -7,7 +7,7 @@ const formatDate = (date) => {
   return d.toLocaleString("en-US", options);
 };
 
-const BookingConfirmation = ({ onPrevious, onSubmit, reservationDetails }) => {
+const ConfirmedBooking = ({ onPrevious, onSubmit, reservationDetails }) => {
   const bookingDate = formatDate(reservationDetails.date);
   return (
     <div className="items-center min-w-xs md:w-1/3 w-9/12 p-5 flex flex-col gap-5">
@@ -87,4 +87,4 @@ const BookingConfirmation = ({ onPrevious, onSubmit, reservationDetails }) => {
   );
 };
 
-export default BookingConfirmation;
+export default ConfirmedBooking;

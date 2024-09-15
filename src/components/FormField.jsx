@@ -49,7 +49,7 @@ const FormField = ({
       <ErrorMessage
         className="text-red-500 text-sm"
         name={name}
-        component="div"
+        component="p"
       />
     </div>
   );

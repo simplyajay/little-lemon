@@ -21,7 +21,7 @@ const PaymentForm = ({ formInitialValues, onPrevious, onSubmit }) => {
       validationSchema={paymentValidationSchema}
       onSubmit={handleSubmit}
     >
-      <Form className="items-center min-w-xs md:w-1/3 w-9/12 p-5 flex flex-col gap-5 border border-red-500">
+      <Form className="items-center min-w-xs md:w-1/3 w-9/12 p-5 flex flex-col gap-5">
         <div className="w-full shadow-lg bg-blue-100 border border-solid p-5 border-gray-400 rounded-xl">
           <h1 className="text-center text-xl">
             <strong>Payment Details</strong>
@@ -94,6 +94,7 @@ const PaymentForm = ({ formInitialValues, onPrevious, onSubmit }) => {
           <button
             type="submit"
             className="border border-solid border-black rounded-lg p-2 bg-customYellow min-w-28"
+            aria-label="submit form"
           >
             Next
           </button>

@@ -4,7 +4,7 @@ import BookingForm from "../components/BookingForm";
 import LittleLemonTitle from "../components/LittleLemonTitle";
 import { fetchAPI, submitAPI } from "../api/api";
 import PaymentForm from "../components/PaymentForm";
-import BookingConfirmation from "../components/BookingConfirmation";
+import ConfirmedBooking from "../components/ConfirmedBooking";
 
 const bookingInitialValues = {
   firstName: "",
@@ -24,7 +24,7 @@ const paymentInitialValues = {
   ccv: "",
 };
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
   switch (action.type) {
     case "UPDATE_TIMES":
       return action.payload;
@@ -74,7 +74,11 @@ const BookingPage = () => {
 
   const handlePaymentSubmit = (paymentDetails) => {
     setPaymentDetails(paymentDetails);
-    setStep("confirmation");
+
+    if (submitForm(reservationDetails)) {
+      console.log(submitForm(reservationDetails));
+      setStep("confirmation");
+    }
   };
 
   const handlePreviousClick = () => {
@@ -84,6 +88,10 @@ const BookingPage = () => {
     if (step === "confirmation") {
       setStep("payment");
     }
+  };
+
+  const submitForm = (formData) => {
+    return submitAPI(formData);
   };
 
   return (
@@ -117,7 +125,7 @@ const BookingPage = () => {
           />
         )}
         {step === "confirmation" && (
-          <BookingConfirmation
+          <ConfirmedBooking
             onPrevious={handlePreviousClick}
             reservationDetails={reservationDetails}
             paymentDetails={paymentDetails}
